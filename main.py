@@ -4,7 +4,7 @@ import requests
 
 # 1. 從環境變數讀取金鑰
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY")
-DISCORD_WEBHOOK_URL = os.getenv("https://discord.com/api/webhooks/1502163003343245372/YGRZTXPF29PW1bOMq6tVbM_k3UdWJZV4dm16M7WG4a6LWCJqNG-ox24prrLEur390315")
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 # 2. 讀取本地的 JSON 題庫
 with open('articles.json', 'r', encoding='utf-8') as f:
