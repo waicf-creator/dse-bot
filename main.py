@@ -5,6 +5,7 @@ import requests
 # 1. 從環境變數讀取金鑰
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY")
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+MINIMAX_GROUP_ID = os.getenv("MINIMAX_GROUP_ID")
 
 # 2. 讀取本地的 JSON 題庫
 with open('articles.json', 'r', encoding='utf-8') as f:
