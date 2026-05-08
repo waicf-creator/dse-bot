@@ -3,7 +3,7 @@ import os
 import requests
 
 # 1. 從環境變數讀取金鑰
-MINIMAX_API_KEY = os.getenv("sk-api-RokiOznjW1daD2wK_YGfSgulMw9o4h1YSTbfw4GBBCh0g6DRywC_6DWS19kiQWbVZhfPuHqV7cJ0jYV6Nf79gb54XCfdWiCdb0SWjsKn3Jx6WSvazHkMcuk")
+MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY")
 DISCORD_WEBHOOK_URL = os.getenv("https://discord.com/api/webhooks/1502163003343245372/YGRZTXPF29PW1bOMq6tVbM_k3UdWJZV4dm16M7WG4a6LWCJqNG-ox24prrLEur390315")
 
 # 2. 讀取本地的 JSON 題庫
