@@ -1,8 +1,8 @@
 name: Daily DSE Bot
 on:
   schedule:
-    - cron: '0 0 * * *' 
-  workflow_dispatch: 
+    # 早上 7:00 HKT = 晚上 23:00 UTC (前一天)
+    - cron: '0 23 * * *'
 
 jobs:
   run-bot:
