@@ -3,6 +3,7 @@ on:
   schedule:
     # 早上 7:00 HKT = 晚上 23:00 UTC (前一天)
     - cron: '0 23 * * *'
+workflow_dispatch: # 允許你隨時手動點擊按鈕來測試
 
 jobs:
   run-bot:
