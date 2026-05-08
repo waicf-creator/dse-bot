@@ -60,10 +60,12 @@ headers = {
     "Content-Type": "application/json"
 }
 payload = {
-    "model": "abab6.5s-chat", # 使用 abab6.5s-chat 模型，性價比高且速度快
+    "model": "abab6.5s-chat", 
     "messages": [
         {"role": "user", "content": prompt}
-    ]
+    ],
+    "max_tokens": 1500,  # 強制把輸出上限拉高，防止話說一半被截斷
+    "temperature": 0.5   # 順便加上溫度控制 (0~1)，0.5 能讓教學內容比較嚴謹準確
 }
 
 # 發送請求給 MiniMax
