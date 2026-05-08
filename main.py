@@ -77,7 +77,7 @@ except Exception as e:
         print(f"錯誤詳情：{response.text}")
     exit(1)
 
-# 6. 整理格式並發送至 Discord (改用 Embed 格式)
+# 6. 整理格式並發送至 Discord (確保包含發送動作)
 description_text = f"**【原文】**\n> {target_article['content']}\n\n**【名師解析】**\n{ai_content}"
 
 # 安全機制：確保字數不會超過 Embed 的 4096 字元極限
@@ -89,10 +89,13 @@ discord_message = {
         {
             "title": f"📚 今日文言文：《{target_article['title']}》",
             "description": description_text,
-            "color": 5814783 # 這是一個好看的 Discord 預設紫藍色 (Hex: 58B9FF)
+            "color": 5814783 
         }
     ]
 }
+
+# ⭐ 重要：就是少了下面這一行，才導致 NameError！
+res = requests.post(DISCORD_WEBHOOK_URL, json=discord_message)
 
 # 7. 如果發送成功，將文章標記為已使用並存檔
 if res.status_code in [200, 204]:
