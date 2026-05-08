@@ -1,0 +1,39 @@
+name: Daily DSE Bot
+on:
+  schedule:
+    # 這裡使用 UTC 時間。UTC 0 點等同於香港時間早上 8 點。
+    - cron: '0 0 * * *' 
+  workflow_dispatch: # 允許你隨時手動點擊按鈕來測試
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允許 Action 寫入權限，以便更新 JSON 檔案
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python main.py
+
+      - name: Commit and push updated JSON
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add articles.json
+          # 如果沒有變化就不會 commit，避免報錯
+          git commit -m "Auto-update: 標記文章為已發送" || exit 0
+          git push
